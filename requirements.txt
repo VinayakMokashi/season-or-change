@@ -1,13 +1,17 @@
-# Evaluation, analysis and figures (CPU is enough). Versions used for results/probes/.
-# Install PyTorch from https://pytorch.org for your platform first, e.g.
-#   pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cpu
-torch==2.14.1
-torchvision==0.29.1
-numpy==2.5.2
-scipy==1.18.1
-scikit-learn==1.9.1
-pandas==3.1.0
-matplotlib==3.11.2
-pillow==12.3.0
-tifffile==2026.10.15
-imagecodecs==2026.10.10
+# Evaluation, analysis and figures (CPU is enough).
+# Install PyTorch first for your platform (https://pytorch.org), e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# results/probes/ was produced with Python 3.12, torch 2.14.1, torchvision 0.29.1,
+# numpy 2.5.2, scipy 1.18.1, scikit-learn 1.9.1, pandas 3.1.0, matplotlib 3.11.2,
+# pillow 12.3.0, tifffile 2026.10.15 and imagecodecs 2026.10.10.
+torch>=2.0
+torchvision>=0.15
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+pandas>=2.0
+matplotlib>=3.7
+pillow>=10.0
+tifffile>=2023.1
+imagecodecs>=2023.1
