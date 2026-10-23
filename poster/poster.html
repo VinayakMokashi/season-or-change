@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CACo Critical Replication Poster</title>
+<style>
+  :root {
+    --surface: #fcfcfb;
+    --panel: #ffffff;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --rule: #e1e0d9;
+    --seco: #2a78d6;
+    --teco: #eb6834;
+    --caco: #1baf7a;
+    --moco: #eda100;
+    --accent: #1c5cab;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 1200px; background: var(--surface); }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.38;
+    padding: 26px 30px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 12px;
+  }
+  h1 { font-size: 40px; line-height: 1.08; letter-spacing: -0.5px; font-weight: 700; }
+  .subtitle { font-size: 19px; color: var(--ink-2); margin-top: 6px; }
+  .names { font-size: 18px; margin-top: 8px; font-weight: 600; }
+  .names span { font-weight: 400; color: var(--ink-2); }
+  .badge {
+    text-align: right; font-size: 13.5px; color: var(--ink-2); line-height: 1.5;
+    max-width: 430px;
+  }
+  .badge b { color: var(--ink); }
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.18fr 1fr;
+    gap: 18px;
+    min-height: 0;
+  }
+  .col { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+  section {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 10px 15px 10px;
+  }
+  h2 {
+    font-size: 19px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px;
+  }
+  h3 { font-size: 15.5px; font-weight: 700; margin: 8px 0 3px; }
+  p + p { margin-top: 6px; }
+  ul { padding-left: 18px; }
+  li + li { margin-top: 3px; }
+  img { width: 100%; display: block; }
+  .caption { font-size: 12.5px; color: var(--ink-2); margin-top: 4px; }
+  .question {
+    margin-top: 8px; padding: 8px 11px; border-left: 4px solid var(--caco);
+    background: #f3f8f5; border-radius: 0 6px 6px 0;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { padding: 3px 5px; text-align: left; vertical-align: top; }
+  thead th { border-bottom: 1.5px solid var(--ink-2); font-weight: 700; }
+  tbody tr + tr td { border-top: 1px solid var(--rule); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: 0; }
+  .v-hold { color: #006300; font-weight: 700; }
+  .v-part { color: #8a5a00; font-weight: 700; }
+  .v-no { color: #b42d2c; font-weight: 700; }
+  .callouts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+  .callout { border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; }
+  .callout .big { font-size: 27px; font-weight: 700; line-height: 1.1; }
+  .callout .lbl { font-size: 12.5px; color: var(--ink-2); }
+  .footer { font-size: 11.5px; color: var(--muted); margin-top: auto; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Does Change-Awareness Help at Small Scale?<br>A Critical Replication of CACo</h1>
+    <div class="names">Devraj Raghuvanshi, Jimmy Lin, Paneri Patel, Vinayak Mokashi
+      <span>&nbsp;·&nbsp; Brown University, CSCI 1470 Deep Learning</span></div>
+  </div>
+  <div class="badge">
+    <b>Unofficial replication</b> of <i>Change-Aware Sampling and Contrastive Learning
+    for Satellite Images</i> (Mall, Hariharan &amp; Bala, CVPR 2023).<br>
+    Original code: github.com/utkarshmall13/CACo
+  </div>
+</header>
+
+<main>
+  <!-- Column 1: introduction and methodology -->
+  <div class="col">
+    <section>
+      <h2>Introduction</h2>
+      <p>Satellites image every place on Earth every few days, but almost none of it is
+      labelled. Self-supervised pretraining can turn this archive into features for
+      land-cover mapping and change detection.</p>
+      <p><b>CACo</b> uses time as supervision. Images of a place months apart should
+      look the same (seasons). Images four years apart are meant to be pushed apart
+      <i>only if</i> the place really changed, which CACo estimates during training.</p>
+      <div class="question"><b>Our questions.</b> Do the paper's claims hold under an
+      independent evaluation? Does change-awareness still help with 10× less
+      pretraining data?</div>
+    </section>
+
+    <section>
+      <h2>Methodology</h2>
+      <img src="../figures/pretraining_examples.png" alt="Pretraining images">
+      <div class="caption">Our pretraining data: 2,000 Sentinel-2 locations × 10 dates
+      (2017–18 and 2021–22). Top: permanent change. Bottom: seasons only. Contains
+      modified Copernicus Sentinel data (2017–2021).</div>
+      <h3>Four objectives, one codebase</h3>
+      <table>
+        <thead><tr><th>Objective</th><th>Images years apart are…</th><th class="num">Steps</th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:var(--moco)"></span>MoCo v2</td><td>not used (two augmentations)</td><td class="num">31,200</td></tr>
+          <tr><td><span class="dot" style="background:var(--seco)"></span>SeCo</td><td>sometimes positives (dates span both periods)</td><td class="num">2,800</td></tr>
+          <tr><td><span class="dot" style="background:var(--teco)"></span>TeCo</td><td>always negatives</td><td class="num">6,000</td></tr>
+          <tr><td><span class="dot" style="background:var(--caco)"></span>CACo</td><td>negatives, masked where unchanged</td><td class="num">6,000</td></tr>
+        </tbody>
+      </table>
+      <ul style="margin-top:8px">
+        <li>ResNet-18, MoCo v2 framework, 400 epochs, batch 256, the authors' code; 47 GPU-hours.</li>
+        <li><b>Evaluation:</b> 9 frozen encoders (ours, the authors' 20k-location
+        checkpoints, ImageNet, random) × 2 datasets; linear probe, 5 seeds, paired bootstrap.</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Column 2: quantitative results -->
+  <div class="col">
+    <section>
+      <h2>Results</h2>
+      <img src="../figures/probe_accuracy_poster.png" alt="Linear-probe accuracy">
+      <div class="caption">Linear-probe accuracy on frozen features, mean of 5 seeds
+      (s.d. ≤ 1.03). UC Merced (0.3 m aerial) is not used in the paper.</div>
+    </section>
+    <section>
+      <h2>Ablation: what each component buys</h2>
+      <img src="../figures/component_steps_poster.png" alt="Component contributions">
+      <div class="callouts">
+        <div class="callout"><div class="big" style="color:var(--caco)">+1.06</div>
+          <div class="lbl">change-awareness, authors' 20k checkpoints (EuroSAT, significant)</div></div>
+        <div class="callout"><div class="big" style="color:var(--muted)">+0.58</div>
+          <div class="lbl">change-awareness, our 2k pretraining (95% CI −0.28 to 1.43)</div></div>
+      </div>
+    </section>
+    <section>
+      <h2>What the paper doesn't tell you</h2>
+      <ul>
+        <li><b>Equal epochs ≠ equal training.</b> TeCo/CACo get 2× SeCo's optimizer steps,
+        in our runs and in the released checkpoints.</li>
+        <li><b>Probe protocol moves numbers.</b> Changing the probe protocol (normalization,
+        BatchNorm handling, batch size) shifts the same checkpoints by up to 8.7 points
+        and moves ImageNet above or below them.</li>
+        <li><b>CACo ≠ TeCo + mask.</b> The mask removes one of three long-term negatives
+        in two of three subspaces, and CACo also samples dates differently.</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Column 3: claim check, stress test, discussion -->
+  <div class="col">
+    <section>
+      <h2>Claim check</h2>
+      <table>
+        <thead><tr><th>Paper claim (EuroSAT unless noted)</th><th class="num">Ours</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>CACo beats SeCo (+1.66)</td><td class="num">+2.51</td><td class="v-hold">Holds</td></tr>
+          <tr><td>Long-term, then change-aware, each add accuracy (H1)</td><td class="num">+1.45, +1.06</td><td class="v-hold">Holds</td></tr>
+          <tr><td>Beats MoCo v2 (H2)</td><td class="num">CACo +3.46</td><td class="v-part">Partly</td></tr>
+          <tr><td>Beats ImageNet</td><td class="num">−0.61 (n.s.)</td><td class="v-no">No</td></tr>
+          <tr><td>BigEarthNet (MLP probe): CACo &gt; SeCo, ImageNet</td><td class="num">&gt; SeCo only</td><td class="v-part">Partly</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Stress test: aerial imagery</h2>
+      <p>On UC Merced (0.3 m/pixel) ImageNet features lead every satellite encoder. The
+      lead over the best released checkpoint grows from 0.6 points on EuroSAT to 5.9.</p>
+      <img src="../figures/failure_examples_poster.png" alt="UC Merced failure cases" style="margin-top:7px">
+      <div class="caption">Test images ImageNet features get right and the authors' CACo
+      checkpoint gets wrong in every seed (37 of 420); CACo's prediction below each.</div>
+    </section>
+    <section>
+      <h2>CACo's change estimate</h2>
+      <img src="../figures/change_ratio_histogram.png" alt="Histogram of change ratios">
+      <div class="caption">Long-term / short-term feature-distance ratio per training item
+      (our CACo run). The mixture model labels the right tail (orange) as changed.</div>
+    </section>
+    <section>
+      <h2>Discussion</h2>
+      <p><b>Lessons.</b> Controls matter as much as models: match compute, fix one
+      evaluation protocol, include MoCo v2 and ImageNet baselines.</p>
+      <p><b>Limitations &amp; next.</b> One pretraining run per objective at 2k locations.
+      Next: step-matched training, OSCD change detection, a soft change mask.</p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

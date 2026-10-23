@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.jpg binary
+*.png binary
+*.pdf binary
+*.npz binary
+third_party/** linguist-vendored

@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+
+# Data, weights and caches (downloaded by scripts/download.py)
+data/
+checkpoints/
+cache/
+logs/
+# per-epoch change-estimate plots written during CACo pretraining
+histogram_caco/
+*.pth
+*.ckpt
+*.tar.gz
+*.zip
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+!results/**/*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

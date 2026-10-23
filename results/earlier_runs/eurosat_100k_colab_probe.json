@@ -1,0 +1,117 @@
+{
+ "description": "EuroSAT linear probe of the authors' released 100k checkpoints plus random/ImageNet baselines (Google Colab GPU, April 2026). Protocol: Resize(64)+ToTensor+ImageNet normalization; frozen backbone inside nn.Sequential trained with model.train() (BatchNorm statistics update during probe training); Adam lr 1e-3, 100 epochs, decay at 60/80, batch 64, seed 42; test accuracy printed every 10 epochs; best_epoch_test_acc is the maximum over all 100 epochs.",
+ "models": {
+  "Random Init": {
+   "test_acc_every_10_epochs": {
+    "10": 61.63,
+    "20": 62.39,
+    "30": 62.7,
+    "40": 62.37,
+    "50": 61.57,
+    "60": 62.33,
+    "70": 62.37,
+    "80": 62.98,
+    "90": 63.17,
+    "100": 62.8
+   },
+   "train_acc_every_10_epochs": {
+    "10": 61.56,
+    "20": 63.71,
+    "30": 64.6,
+    "40": 64.8,
+    "50": 64.98,
+    "60": 65.38,
+    "70": 66.25,
+    "80": 66.61,
+    "90": 66.59,
+    "100": 66.81
+   },
+   "final_test_acc": 62.8,
+   "best_epoch_test_acc": 63.33
+  },
+  "ImageNet": {
+   "test_acc_every_10_epochs": {
+    "10": 85.85,
+    "20": 85.09,
+    "30": 85.63,
+    "40": 85.59,
+    "50": 84.69,
+    "60": 84.59,
+    "70": 85.65,
+    "80": 85.78,
+    "90": 85.96,
+    "100": 85.26
+   },
+   "train_acc_every_10_epochs": {
+    "10": 86.7,
+    "20": 87.52,
+    "30": 87.25,
+    "40": 87.81,
+    "50": 87.98,
+    "60": 87.57,
+    "70": 88.69,
+    "80": 88.86,
+    "90": 88.96,
+    "100": 88.93
+   },
+   "final_test_acc": 85.26,
+   "best_epoch_test_acc": 86.11
+  },
+  "SeCo 100k": {
+   "test_acc_every_10_epochs": {
+    "10": 92.13,
+    "20": 93.17,
+    "30": 93.19,
+    "40": 93.39,
+    "50": 93.2,
+    "60": 93.33,
+    "70": 93.17,
+    "80": 93.11,
+    "90": 93.7,
+    "100": 93.06
+   },
+   "train_acc_every_10_epochs": {
+    "10": 91.85,
+    "20": 92.95,
+    "30": 93.49,
+    "40": 93.78,
+    "50": 94.06,
+    "60": 94.2,
+    "70": 94.39,
+    "80": 94.54,
+    "90": 94.45,
+    "100": 94.55
+   },
+   "final_test_acc": 93.06,
+   "best_epoch_test_acc": 93.7
+  },
+  "CACo 100k": {
+   "test_acc_every_10_epochs": {
+    "10": 92.46,
+    "20": 93.35,
+    "30": 93.43,
+    "40": 93.41,
+    "50": 93.54,
+    "60": 93.48,
+    "70": 93.48,
+    "80": 93.56,
+    "90": 93.41,
+    "100": 93.31
+   },
+   "train_acc_every_10_epochs": {
+    "10": 92.57,
+    "20": 93.35,
+    "30": 93.82,
+    "40": 94.1,
+    "50": 94.46,
+    "60": 94.56,
+    "70": 94.77,
+    "80": 94.76,
+    "90": 95.05,
+    "100": 94.84
+   },
+   "final_test_acc": 93.31,
+   "best_epoch_test_acc": 93.65
+  }
+ }
+}

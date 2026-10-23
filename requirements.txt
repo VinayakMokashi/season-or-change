@@ -1,0 +1,13 @@
+# Evaluation, analysis and figures (CPU is enough). Versions used for results/probes/.
+# Install PyTorch from https://pytorch.org for your platform first, e.g.
+#   pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1
+torchvision==0.29.1
+numpy==2.5.2
+scipy==1.18.1
+scikit-learn==1.9.1
+pandas==3.1.0
+matplotlib==3.11.2
+pillow==12.3.0
+tifffile==2026.10.15
+imagecodecs==2026.10.10

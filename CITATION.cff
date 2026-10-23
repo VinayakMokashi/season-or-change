@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "Season or Change? Does change-aware contrastive learning help satellite imagery at small scale?"
+message: "If you use this study, please cite it and the original CACo paper."
+type: software
+authors:
+  - given-names: Devraj
+    family-names: Raghuvanshi
+  - given-names: Jimmy
+    family-names: Lin
+  - given-names: Paneri
+    family-names: Patel
+  - given-names: Vinayak
+    family-names: Mokashi
+repository-code: "https://github.com/VinayakMokashi/season-or-change"
+license: MIT
+version: "1.0"
+date-released: "2026-10-23"
+keywords:
+  - self-supervised learning
+  - contrastive learning
+  - remote sensing
+  - satellite imagery
+references:
+  - type: conference-paper
+    title: "Change-Aware Sampling and Contrastive Learning for Satellite Images"
+    authors:
+      - given-names: Utkarsh
+        family-names: Mall
+      - given-names: Bharath
+        family-names: Hariharan
+      - given-names: Kavita
+        family-names: Bala
+    collection-title: "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+    year: 2023
+    start: 5261
+    end: 5270

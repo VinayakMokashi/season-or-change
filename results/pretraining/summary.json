@@ -1,0 +1,30 @@
+{
+ "SeCo": {
+  "epochs": 400,
+  "optimizer_steps": 2800,
+  "gpu_hours": 4.63,
+  "loss_first_epoch": 18.9872,
+  "loss_last_10_epochs": 17.485
+ },
+ "TeCo": {
+  "epochs": 400,
+  "optimizer_steps": 6000,
+  "gpu_hours": 9.17,
+  "loss_first_epoch": 20.0388,
+  "loss_last_10_epochs": 12.904
+ },
+ "CACo": {
+  "epochs": 400,
+  "optimizer_steps": 6000,
+  "gpu_hours": 9.09,
+  "loss_first_epoch": 20.5767,
+  "loss_last_10_epochs": 13.346
+ },
+ "MoCo": {
+  "epochs": 400,
+  "optimizer_steps": 31200,
+  "gpu_hours": 23.93,
+  "loss_first_epoch": 7.2163,
+  "loss_last_10_epochs": 0.738
+ }
+}
