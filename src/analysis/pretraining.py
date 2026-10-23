@@ -60,11 +60,8 @@ def main():
     axes[0].set_ylabel('contrastive loss')
     fig.tight_layout(w_pad=1.5)
 
-    out = ROOT / 'figures'
-    out.mkdir(exist_ok=True)
-    for ext in ('pdf', 'png'):
-        fig.savefig(out / f'pretraining_loss.{ext}')
-    (LOGS / 'summary.json').write_text(json.dumps(summary, indent=1), encoding='utf-8')
+    style.save(fig, 'pretraining_loss')
+    (LOGS / 'summary.json').write_text(json.dumps(summary, indent=1), encoding='utf-8', newline='\n')
     print(json.dumps(summary, indent=1))
 
 

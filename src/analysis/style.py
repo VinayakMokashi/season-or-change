@@ -1,5 +1,9 @@
 """Shared figure style: one colour per method, fixed across every figure."""
+from pathlib import Path
+
 import matplotlib as mpl
+
+FIGURES = Path(__file__).resolve().parents[2] / 'figures'
 
 SURFACE = '#fcfcfb'
 INK = '#0b0b0b'
@@ -48,3 +52,10 @@ def apply():
         'savefig.dpi': 300,
         'savefig.bbox': 'tight',
     })
+
+
+def save(fig, name):
+    """Write figures/<name>.pdf and .png without timestamps, so reruns give identical files."""
+    FIGURES.mkdir(exist_ok=True)
+    fig.savefig(FIGURES / f'{name}.pdf', metadata={'CreationDate': None})
+    fig.savefig(FIGURES / f'{name}.png')

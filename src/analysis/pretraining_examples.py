@@ -79,9 +79,7 @@ def main():
         axes[row, 0].set_ylabel(label, fontsize=9, color=style.INK)
     fig.tight_layout(h_pad=0.6, w_pad=0.4)
 
-    out = Path(__file__).resolve().parents[2] / 'figures'
-    for ext in ('pdf', 'png'):
-        fig.savefig(out / f'pretraining_examples.{ext}')
+    style.save(fig, 'pretraining_examples')
 
 
 if __name__ == '__main__':

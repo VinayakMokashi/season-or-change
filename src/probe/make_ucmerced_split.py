@@ -23,8 +23,8 @@ def main():
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    (out / 'ucmerced_train.txt').write_text('\n'.join(train) + '\n')
-    (out / 'ucmerced_test.txt').write_text('\n'.join(test) + '\n')
+    (out / 'ucmerced_train.txt').write_text('\n'.join(train) + '\n', encoding='utf-8', newline='\n')
+    (out / 'ucmerced_test.txt').write_text('\n'.join(test) + '\n', encoding='utf-8', newline='\n')
     print(f'train={len(train)} test={len(test)} -> {out}')
 
 

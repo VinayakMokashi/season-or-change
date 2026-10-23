@@ -208,7 +208,7 @@ def main():
         log(f'  linear {lp["final_acc_mean"]:.2f} ± {lp["final_acc_std"]:.2f} | '
             f'kNN {summary["knn"]["acc"]:.2f} | P@20 {summary["retrieval"]["P@20"]:.2f}')
 
-        (out_dir / f'{name}.json').write_text(json.dumps(summary, indent=1), encoding='utf-8')
+        (out_dir / f'{name}.json').write_text(json.dumps(summary, indent=1), encoding='utf-8', newline='\n')
         np.savez_compressed(out_dir / 'predictions' / f'{name}.npz', labels=yte,
                             linear_pred=np.stack(preds), seeds=np.array(args.seeds),
                             knn_pred=knn_pred, seed_avg_correct=seed_avg_correct)

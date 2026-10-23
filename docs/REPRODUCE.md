@@ -89,7 +89,8 @@ python experiments/bigearthnet/train_bigearthnet.py --data_dir data/bigearthnet 
 ```
 
 On the first run, `--download` fetches BigEarthNet-S2 v1.0 and its splits from
-Zenodo record 12687186 (about 70 GB). Later runs can omit it. The script is a cleaned version of the one that produced
+Zenodo record 12687186 (about 70 GB); later runs can omit it. The script is a
+cleaned version of the one that produced
 `results/earlier_runs/bigearthnet_100k_probe.log`, with the same settings.
 
 ## 5. Colab probe of the authors' checkpoints

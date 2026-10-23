@@ -87,7 +87,7 @@ def main():
             if a in res and b in res:
                 d, lo, hi = paired(res[a]['correct'], res[b]['correct'], f'{ds}:{a}-{b}')
                 comparisons[ds][f'{a} - {b}'] = {'diff': d, 'ci95': [lo, hi]}
-    (PROBES / 'comparisons.json').write_text(json.dumps(comparisons, indent=1), encoding='utf-8')
+    (PROBES / 'comparisons.json').write_text(json.dumps(comparisons, indent=1), encoding='utf-8', newline='\n')
 
     def step(ds, a, b):
         c = comparisons[ds].get(f'{a} - {b}')
@@ -116,7 +116,7 @@ def main():
     h4 = all(gaps.get(f'ucmerced/{s}', {}).get('imagenet_minus_best', -1e9) >
              gaps.get(f'eurosat/{s}', {}).get('imagenet_minus_best', 1e9) for s in ('10k', '100k'))
     hyp['H4'] = {'gaps': gaps, 'verdict': 'supported' if h4 else 'not supported'}
-    (PROBES / 'hypotheses.json').write_text(json.dumps(hyp, indent=1), encoding='utf-8')
+    (PROBES / 'hypotheses.json').write_text(json.dumps(hyp, indent=1), encoding='utf-8', newline='\n')
 
     lines = ['# Linear-probe sweep', '',
              'Final-epoch top-1 accuracy (%), mean ± s.d. over 5 probe seeds; frozen ResNet-18 features.', '',
@@ -139,7 +139,7 @@ def main():
         lines.append(f'| {a} − {b} | ' + ' | '.join(cells) + ' |')
     lines += ['', '## Hypotheses (docs/HYPOTHESES.md)', '']
     lines += [f'- **{k}**: {v["verdict"]}' for k, v in hyp.items()]
-    (PROBES / 'summary.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+    (PROBES / 'summary.md').write_text('\n'.join(lines) + '\n', encoding='utf-8', newline='\n')
     print('\n'.join(lines))
 
     plot(results)
@@ -188,8 +188,7 @@ def plot(results, figsize=(7.2, 3.6), out_name='probe_accuracy'):
         axes[0].annotate(group, xy=(0, pos - 0.62), xycoords=('axes fraction', 'data'),
                          fontsize=7.5, color=style.MUTED, ha='left', va='bottom')
     fig.tight_layout(w_pad=1.2)
-    for ext in ('pdf', 'png'):
-        fig.savefig(ROOT / 'figures' / f'{out_name}.{ext}')
+    style.save(fig, out_name)
 
 
 # Paper Table 6 (ResNet-18, 100k, EuroSAT linear probe): +Improved sampling 91.42,
@@ -233,8 +232,7 @@ def plot_steps(comparisons, figsize=(7.2, 2.5), out_name='component_steps'):
     axes[0].set_ylim(len(STEPS) - 0.4, -0.6)
     fig.legend(loc='lower center', ncol=3, fontsize=8, bbox_to_anchor=(0.55, -0.08), handletextpad=0.3)
     fig.tight_layout(w_pad=1.2, rect=(0, 0.06, 1, 1))
-    for ext in ('pdf', 'png'):
-        fig.savefig(ROOT / 'figures' / f'{out_name}.{ext}')
+    style.save(fig, out_name)
 
 
 if __name__ == '__main__':

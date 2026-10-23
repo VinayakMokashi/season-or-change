@@ -58,8 +58,7 @@ def main():
             ax.set_title(classes[labels[i]], fontsize=8, color=style.INK)
             ax.set_xlabel(f'CACo: {classes[caco["linear_pred"][0][i]]}', fontsize=7.5, color=style.INK_2)
         fig.tight_layout(w_pad=0.4)
-        for ext in ('pdf', 'png'):
-            fig.savefig(ROOT / 'figures' / f'{out_name}.{ext}')
+        style.save(fig, out_name)
         plt.close(fig)
     print(f'{len(picks)} images: ImageNet right in all seeds, CACo wrong in all seeds')
 
